@@ -1,0 +1,45 @@
+<div [@routerTransition] class="login-page">
+    <div class="row justify-content-md-center">
+        <div class="col-md-4">
+            <img class="user-avatar" src="assets/images/logo.png" width="150px" />
+            <h1>Learners' Academy</h1>
+            <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+                <div class="form-content">
+                    <div class="form-group">
+                        <input
+                            [placeholder]="'Email' | translate"
+                            class="form-control input-underline input-lg" formControlName ="email"
+                            type="email" [ngClass]="{ 'is-invalid': submitted && loginf.email.errors }"
+                        />
+                        <div *ngIf="submitted && loginf.email.errors" class="invalid-feedback">
+                            <div *ngIf="loginf.email.errors.required" class="input-lg">Email is required</div>
+                                    <div *ngIf="loginf.email.errors.email" class="input-lg">Email must be a valid email address</div>
+                                </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <input
+                            [placeholder]="'Password' | translate"
+                            class="form-control input-underline input-lg" formControlName ="password"
+                            type="password" [ngClass]="{ 'is-invalid': submitted && loginf.password.errors }"
+                        />
+
+                        <div *ngIf="submitted && loginf.password.errors" class="invalid-feedback">
+                            <div *ngIf="loginf.password.errors.required" class="input-lg">Password is required</div>
+                            <div *ngIf="loginf.password.errors.minlength" class="input-lg">Password must be at least 6 characters</div>
+                        </div>
+
+                    </div>
+                </div>
+                <button type = "submit" class = "btn rounded-btn">Login</button>&nbsp;
+
+
+                <!-- <a class="btn rounded-btn" [routerLink]="['/']" (click)="onLoggedin()">{{ 'Log in' | translate }}</a>
+                &nbsp; -->
+              <!--<a class="btn rounded-btn" [routerLink]="['/signup']">{{ 'Register' | translate }}</a>-->
+                <button type="button" routerLink ='/signup' class= "btn rounded-btn">Register</button>
+            </form>
+        </div>
+    </div>
+</div>
